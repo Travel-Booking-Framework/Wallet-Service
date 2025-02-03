@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package payment;
+
+// Service for processing transactions at the payment gateway.
+service PaymentGateway {
+  // RPC method to process a transaction.
+  rpc ProcessTransaction (TransactionRequest) returns (TransactionResponse);
+}
+
+// Message carrying transaction details.
+message TransactionRequest {
+  int32 transaction_id = 1;
+  string wallet_uuid = 2;
+  int64 amount = 3;
+  string transaction_type = 4;
+  string status = 5;
+  string description = 6;
+}
+
+// Response message from PaymentGatewayService.
+message TransactionResponse {
+  string status = 1;
+  string message = 2;
+}

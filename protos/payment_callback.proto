@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package wallet;
+
+// Service for receiving payment callbacks.
+service PaymentCallback {
+  // RPC method that PaymentGatewayService will call to send back transaction data.
+  rpc ProcessPaymentCallback (TransactionRequest) returns (TransactionResponse);
+}
+
+// Message carrying transaction details (same structure as before).
+message TransactionRequest {
+  int32 transaction_id = 1;
+  string wallet_uuid = 2;
+  int64 amount = 3;
+  string transaction_type = 4;
+  string status = 5;
+  string description = 6;
+}
+
+// Response message to acknowledge the callback.
+message TransactionResponse {
+  string status = 1;
+  string message = 2;
+}
