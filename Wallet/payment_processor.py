@@ -1,7 +1,6 @@
 import grpc
 from Wallet.models import Transaction, Wallet, TransactionStatus, TransactionType
-import payment_gateway_pb2
-import payment_gateway_pb2_grpc
+from generated import payment_gateway_pb2, payment_gateway_pb2_grpc
 
 
 class PaymentProcessor:

@@ -2,9 +2,9 @@ import grpc
 from concurrent import futures
 import time
 
-from Wallet.models import Transaction, Wallet, TransactionStatus, TransactionType
-import refund_callback_pb2
-import refund_callback_pb2_grpc
+from Wallet.models import Transaction, Wallet, TransactionStatus
+from generated import refund_callback_pb2_grpc, refund_callback_pb2
+
 
 class RefundCallbackServicer(refund_callback_pb2_grpc.RefundCallbackServicer):
     """

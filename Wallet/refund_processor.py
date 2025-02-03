@@ -1,7 +1,6 @@
 import grpc
 from Wallet.models import Transaction, Wallet, TransactionStatus, TransactionType
-import refund_gateway_pb2
-import refund_gateway_pb2_grpc
+from generated import refund_gateway_pb2, refund_gateway_pb2_grpc
 
 
 class RefundProcessor:

@@ -6,8 +6,7 @@ from concurrent import futures
 import time
 
 # Import the generated classes from the protobuf file.
-import user_event_pb2
-import user_event_pb2_grpc
+from generated import user_event_pb2, user_event_pb2_grpc
 
 from Wallet.grpc.observer import Subject
 from Wallet.grpc.wallet_observer import WalletCreationObserver
