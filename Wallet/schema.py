@@ -6,7 +6,7 @@ from Wallet.models import Wallet, Transaction
 class WalletType(DjangoObjectType):
     class Meta:
         model = Wallet
-        fields = ('wallet_uuid', 'national_code', 'balance')
+        fields = '__all__'
 
 
 class TransactionType(DjangoObjectType):
@@ -15,7 +15,7 @@ class TransactionType(DjangoObjectType):
 
     class Meta:
         model = Transaction
-        fields = ('id', 'wallet', 'amount', 'transaction_type', 'timestamp', 'status', 'description')
+        fields = '__all__'
 
     def resolve_national_code(self, info):
         # Returns the national_code from the related Wallet instance.
