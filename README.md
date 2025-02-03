@@ -57,6 +57,12 @@ WalletService follows a modular microservices architecture and leverages the fol
 - **Processing:**  
   - The event is received (e.g., via a dedicated gRPC endpoint) and the Observer pattern (through `WalletCreationObserver`) is used to create a new wallet if one does not exist.
 
+### 4. Queries On Wallet and transactions
+
+- **Operation:**  
+  - Use GraphQL Query for get data from Wallet and Transaction.
+
+
 ## Protobuf Files and gRPC Stub Generation
 
 The following `.proto` files define the gRPC services:
@@ -99,8 +105,7 @@ This will generate the necessary Python files (e.g., `*_pb2.py` and `*_pb2_grpc.
 - **gRPC Libraries:**
   - `grpcio`
   - `grpcio-tools`
-- **Other Libraries:**
-  - `requests` (if used for additional HTTP communications)
+- **GraphQL**
 
 ### Installation
 
@@ -146,3 +151,12 @@ WalletService is designed to manage wallet transactions through asynchronous, gR
   - Using the Observer pattern to trigger wallet creation when new user events are received.
 
 By combining the Observer Pattern with gRPC client/server communication, WalletService achieves decoupled, scalable, and efficient processing of wallet transactions.
+
+## Additional Notes
+
+- **Create a Superuser**: To create an admin account, use the command:
+  ```bash
+  python manage.py createsuperuser
+  ```
+
+- **GraphQL Support**: This project includes GraphQL capabilities, which can be accessed at `/graphql/`.
