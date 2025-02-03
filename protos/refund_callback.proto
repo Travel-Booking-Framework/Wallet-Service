@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package wallet;
+
+// Service for receiving refund callbacks.
+service RefundCallback {
+  // RPC method that RefundService will call to send back refund transaction data.
+  rpc ProcessRefundCallback (RefundRequest) returns (RefundResponse);
+}
+
+// Message carrying refund transaction details (same structure as outbound).
+message RefundRequest {
+  int32 transaction_id = 1;
+  string wallet_uuid = 2;
+  int64 amount = 3;
+  string transaction_type = 4;
+  string status = 5;
+  string description = 6;
+}
+
+// Response message to acknowledge the callback.
+message RefundResponse {
+  string status = 1;
+  string message = 2;
+}

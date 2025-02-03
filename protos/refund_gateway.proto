@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package refund;
+
+// Service for processing refund transactions.
+service RefundGateway {
+  // RPC method to process a refund transaction.
+  rpc ProcessRefund (RefundRequest) returns (RefundResponse);
+}
+
+// Message carrying refund transaction details.
+message RefundRequest {
+  int32 transaction_id = 1;
+  string wallet_uuid = 2;
+  int64 amount = 3;
+  string transaction_type = 4;
+  string status = 5;
+  string description = 6;
+}
+
+// Response message from RefundService.
+message RefundResponse {
+  string status = 1;
+  string message = 2;
+}
