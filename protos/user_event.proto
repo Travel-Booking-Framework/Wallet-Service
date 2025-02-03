@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package wallet_service;
+
+// Service for handling user events.
+service UserEventService {
+  // RPC method for creating a user event.
+  rpc CreateUserEvent (CreateUserEventRequest) returns (CreateUserEventResponse);
+}
+
+// Request message containing the user's national code.
+message CreateUserEventRequest {
+  string national_code = 1;
+}
+
+// Response message indicating the status of the operation.
+message CreateUserEventResponse {
+  string status = 1;
+}
