@@ -8,6 +8,12 @@ class TransactionType(Enum):
     DEBIT = 'debit'    # کاهش موجودی
 
 
+class TransactionStatus(Enum):
+    PENDING = 'pending'
+    COMPLETED = 'completed'
+    FAILED = 'failed'
+
+
 class Wallet(models.Model):
     wallet_uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     national_code = models.CharField(max_length=10, unique=True)  # کد ملی کاربر
@@ -22,6 +28,7 @@ class Transaction(models.Model):
     amount = models.BigIntegerField()  # مبلغ تراکنش (تومان)
     transaction_type = models.CharField(max_length=50, choices=[(tag, tag.value) for tag in TransactionType], default=TransactionType.CREDIT.value)  # نوع تراکنش
     timestamp = models.DateTimeField(auto_now_add=True)  # زمان انجام تراکنش
+    status = models.CharField(max_length=50, choices=[(tag, tag.value) for tag in TransactionStatus], default=TransactionStatus.PENDING.value)  # وضعیت تراکنش
     description = models.TextField(blank=True, null=True)  # توضیحات (اختیاری)
 
     def __str__(self):
